@@ -56,7 +56,7 @@ export function fmtDate(d: string) {
   return `${dd}/${m}/${y}`;
 }
 
-export function buildMessage(o: { service: string; pro?: string; date: string; period: string; notes: string }) {
+export function buildMessage(o: { service: string; pro?: string | undefined; date: string; period: string; notes: string }) {
   return [
     `Olá, ${SALON.name}! Gostaria de solicitar um horário:`,
     ``,
