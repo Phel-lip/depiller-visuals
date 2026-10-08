@@ -44,7 +44,7 @@ export function BookingModal({ open, initialService, onClose }: { open: boolean;
 
   if (!open) return null;
   const today = todayLocal();
-  const next = () => setStep(steps[idx + 1]);
+  const next = () => setStep(steps[idx + 1] ?? "summary");
 
   const rows: [string, string][] = service
     ? [["Serviço", service.title], ...(hasPros ? ([["Profissional", pro]] as [string, string][]) : []), ["Data preferida", fmtDate(date)], ["Período preferido", period || "A combinar"], ["Valor", "Sob consulta"], ...(notes.trim() ? ([["Observação", notes.trim()]] as [string, string][]) : [])]
@@ -56,7 +56,7 @@ export function BookingModal({ open, initialService, onClose }: { open: boolean;
         <div className="flex items-center justify-between border-b px-5 py-4">
           <div className="flex items-center gap-2">
             {idx > 0 && (
-              <button onClick={() => setStep(steps[idx - 1])} aria-label="Voltar" className="rounded-full p-1.5 hover:bg-muted"><ChevronLeft className="h-5 w-5" /></button>
+              <button onClick={() => setStep(steps[idx - 1] ?? "service")} aria-label="Voltar" className="rounded-full p-1.5 hover:bg-muted"><ChevronLeft className="h-5 w-5" /></button>
             )}
             <div>
               <p className="text-xs uppercase tracking-[0.2em] text-primary">Solicitação de horário</p>
